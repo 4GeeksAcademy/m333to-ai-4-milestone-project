@@ -1,16 +1,1 @@
-# Your company context
-
-**Replace this file** with the CONTEXT for your assigned company:
-
-- **Brasaland** — `CONTEXT-brasaland-briefing.md` (grilled food restaurant chain, Colombia + Florida)
-- **TrackFlow** — `CONTEXT-trackflow-briefing.md` (last-mile delivery and warehouse, Mexico + Spain)
-- **Nexova** — `CONTEXT-nexova-briefing.md` (HR consulting and talent acquisition, Chile + Argentina)
-- **HealthCore** — `CONTEXT-healthcore-briefing.md` (outpatient healthcare clinic network, US + UK)
-
-Your instructor or milestone materials will point you to the correct CONTEXT file. Copy its contents here so that all project work and AI assistance use the same domain data, field names, and constraints.
-
----
-
-_Until you add your context, keep this placeholder so the repo structure is clear._
-
-_Estas instrucciones también están disponibles en [español](./CONTEXT.es.md)._
+I am choosing track flow because of it's complexity of moving packages and wanting to know how "every line of code you write is connected to a parcel moving from a warehouse shelf ot someone's front door."  That's a lot of code, and I have the curiosity because there has be a certain process that happens between corporate offices, p.o. boxes, residential, apartment buildings what the protocol is to move it from their distribution centers to the front door.  It also sparks curiosity how they move the packages from their distribution centers to different parcel centers such as from distrbution center to railway, to airplane or whatever the mode of transportation there is to get from one part of the country to another or even international.  As a speaker of 3 different languages, 1 fluent, and 2 broken languages(Vietnamese and Spanish), I would like to see how it translates from one country to another and see how the interaction is on each of the different systems especially since a lot of the materials and manufacturing lies in foreign countries outside of the USA.  This is a 24/7 operated dashboard, and to see the demands of customers and customer service around the clock will be interesting to create and see.  I want to see how people interact with the customer service and how it's automated, and see if there will still be need for actual humans to troubleshoot outside of the automations and how it will work.  I think this project peaks my interests in what I can learn outside of my comfortability of both medical where I was a Physical Therapist assistant and a cook where today I am a chef at a restaurant that is growing rapidly from several restaurants in Atlanta, to restaurants in several different states from Georgia, to North Carolina, Houston, and Los Angeles.  Not to mention that Trackflow's operations and warehouses run out of Los Angeles and Spain, I would love to put to practice my spanish skills and there is a voice command to action that I could create as well I would love to test it.
