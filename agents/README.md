@@ -7,4 +7,12 @@ Each subfolder under `agents/` should represent **one concrete agent** (for exam
 - **Main purpose**: centralize reusable agent development for the company in one monorepo.
 - **Recommendation**: maintain a catalog of agents here as they are created and link to each agent’s README.
 
+## Development rule
+
+**Rule:** Any agent created under this folder must keep its implementation, prompts, and tool bindings documented in a dedicated README and must be scoped to a clear business responsibility.
+
+**Scope:** always active
+
+This rule is always active because it applies to every new or modified agent in the project. It ensures the monorepo remains understandable, reviewable, and consistent across milestones.
+
 > _Spanish version: [README.es.md](./README.es.md)._
