@@ -1,0 +1,28 @@
+/* ============================================================
+   TrackFlow website — small complement to the Tailwind CDN.
+   Only holds global tweaks Tailwind utilities cannot express
+   inline. Remove this file if you prefer a pure Tailwind setup
+   (remember to delete the <link rel="stylesheet"> in the HTML).
+   ============================================================ */
+
+/* Anchored sections clear the sticky header when a nav link jumps to them */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Visible keyboard-focus fallback (Tailwind focus:ring is still primary) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #f59e0b; /* amber-500 */
+  outline-offset: 2px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
