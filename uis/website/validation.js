@@ -41,14 +41,23 @@
   function clearError(errorId, inputEl) {
     var err = $(errorId);
     if (err) { err.textContent = ''; err.classList.add('hidden'); }
-    if (inputEl) { inputEl.removeAttribute('aria-invalid'); }
+    if (inputEl) {
+      inputEl.removeAttribute('aria-invalid');
+    } else {
+      document.querySelectorAll('[aria-describedby~="' + errorId + '"]').forEach(function (input) {
+        input.removeAttribute('aria-invalid');
+      });
+    }
   }
 
-  function showErrorEl(errorId, message) {
+  function showErrorEl(errorId, message, inputEls) {
     var errorEl = $(errorId);
     if (!errorEl) return;
     errorEl.textContent = message;
     errorEl.classList.remove('hidden');
+    if (inputEls) {
+      inputEls.forEach(function (input) { input.setAttribute('aria-invalid', 'true'); });
+    }
   }
 
   /* ---- Field validators: each returns an error string or null ---- */
@@ -72,14 +81,17 @@
     phone: function () {
       var v = form.phone.value.trim();
       // Must start with "+" followed by country code and a number
-      if (!/^\+\d{1,3}[\s-]?\d[\d\s().-]*$/.test(v)) return MESSAGES.phone;
+      if (!/^\+\d{1,3}[\s-]?(?=(?:\D*\d){6,})[\d\s().-]+$/.test(v)) return MESSAGES.phone;
       return null;
     },
     website: function () {
       var v = form.website.value.trim();
       if (!v) return null; // optional field
-      if (!/^https?:\/\/.+/i.test(v)) return MESSAGES.website;
-      try { new URL(v); } catch (e) { return MESSAGES.website; }
+      if (!/^https?:\/\//i.test(v)) return MESSAGES.website;
+      try {
+        var url = new URL(v);
+        if (!url.hostname || url.hostname.indexOf('.') === -1) return MESSAGES.website;
+      } catch (e) { return MESSAGES.website; }
       return null;
     },
     country: function () {
@@ -145,10 +157,12 @@
         error ? showError($('volume-error'), error, form.volume) : clearError('volume-error', form.volume);
         break;
       case 'services':
-        error ? showErrorEl('services-error', error) : clearError('services-error');
+        error ? showErrorEl('services-error', error, Array.from(servicesBoxes)) : clearError('services-error');
+        if (!error) servicesBoxes.forEach(function (input) { input.removeAttribute('aria-invalid'); });
         break;
       case 'current3pl':
-        error ? showErrorEl('current3pl-error', error) : clearError('current3pl-error');
+        error ? showErrorEl('current3pl-error', error, Array.from(current3plRadios)) : clearError('current3pl-error');
+        if (!error) current3plRadios.forEach(function (input) { input.removeAttribute('aria-invalid'); });
         break;
       case 'comments':
         error ? showError($('comments-error'), error, form.comments) : clearError('comments-error', form.comments);
@@ -160,12 +174,21 @@
     return error === null;
   }
 
-  /* ---- Live validation on blur/change ---- */
+  /* ---- Live validation on blur/change and while correcting a field ---- */
   ['companyName', 'contactPerson', 'email', 'phone', 'website', 'country', 'productType', 'volume', 'comments', 'privacy'].forEach(function (name) {
     var el = form[name];
     if (!el) return;
-    var event = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'blur';
-    el.addEventListener(event, function () { validateField(name); });
+    if (el.tagName === 'SELECT' || el.type === 'checkbox') {
+      el.addEventListener('change', function () { validateField(name); });
+      return;
+    }
+    el.addEventListener('blur', function () {
+      el.dataset.touched = 'true';
+      validateField(name);
+    });
+    el.addEventListener('input', function () {
+      if (el.dataset.touched === 'true') validateField(name);
+    });
   });
 
   // Checkbox / radio groups revalidate on change
@@ -190,17 +213,21 @@
 
   /* ---- Low-volume warning modal ---- */
   var modal = $('volume-modal');
-  var pendingSubmit = false;
-
   $('volume-cancel').addEventListener('click', function () {
     modal.classList.add('hidden');
-    pendingSubmit = false;
+    form.volume.focus();
   });
 
   $('volume-continue').addEventListener('click', function () {
     modal.classList.add('hidden');
-    pendingSubmit = false;
     submitSuccess();
+  });
+
+  modal.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      modal.classList.add('hidden');
+      form.volume.focus();
+    }
   });
 
   function showVolumeWarning() {
@@ -237,7 +264,11 @@
       $('form-error-summary').classList.remove('hidden');
       $('form-error-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
       var focusEl = form[firstInvalid];
-      if (focusEl && focusEl.focus) { focusEl.focus(); }
+      if (focusEl && typeof focusEl.focus === 'function') {
+        focusEl.focus();
+      } else if (focusEl && focusEl.length && typeof focusEl[0].focus === 'function') {
+        focusEl[0].focus();
+      }
       return;
     }
 
@@ -250,5 +281,25 @@
     }
 
     submitSuccess();
+  });
+
+  form.addEventListener('reset', function () {
+    window.setTimeout(function () {
+      Object.keys(MESSAGES).forEach(function (name) {
+        var errorId = name === 'productType' ? 'product-type-error' :
+          name === 'contactPerson' ? 'contact-person-error' :
+          name === 'companyName' ? 'company-name-error' : name + '-error';
+        clearError(errorId);
+      });
+      servicesBoxes.forEach(function (input) { input.removeAttribute('aria-invalid'); });
+      current3plRadios.forEach(function (input) { input.removeAttribute('aria-invalid'); });
+      form.querySelectorAll('[aria-invalid="true"]').forEach(function (input) { input.removeAttribute('aria-invalid'); });
+      $('form-error-summary').classList.add('hidden');
+      counter.textContent = '500 remaining';
+      counter.classList.remove('text-rose-600');
+      counter.classList.add('text-slate-500');
+      modal.classList.add('hidden');
+      form.querySelectorAll('[data-touched]').forEach(function (input) { delete input.dataset.touched; });
+    }, 0);
   });
 })();

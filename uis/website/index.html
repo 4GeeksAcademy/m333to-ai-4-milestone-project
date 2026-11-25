@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="motion-safe:scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TrackFlow — Logistics that scales with your e-commerce</title>
   <meta name="description" content="Warehouse management, last-mile deliveries and reverse logistics in the United States and Spain. Over 15 years helping fashion, electronics and cosmetics brands grow without worrying about operations." />
   <meta name="keywords" content="warehouse management, last-mile delivery, reverse logistics, e-commerce logistics, TrackFlow" />
-  <link rel="stylesheet" href="styles.css" />
-
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TrackFlow — Logistics that scales with your e-commerce" />
+  <meta property="og:description" content="Warehouse management, last-mile deliveries and reverse logistics in the United States and Spain." />
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -77,7 +79,7 @@
       </div>
 
       <!-- Mobile menu button -->
-      <button id="menu-toggle" class="md:hidden rounded-md p-2 text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-500" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+      <button id="menu-toggle" class="rounded-md p-2 text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu" type="button">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -99,7 +101,7 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section id="home" class="relative overflow-hidden bg-slate-900">
+    <section id="home" class="relative scroll-mt-20 overflow-hidden bg-slate-900">
       <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <div class="max-w-3xl">
@@ -139,15 +141,15 @@
             <p class="mt-1 text-sm text-slate-400">Countries, own warehouses</p>
           </div>
           <div>
-            <p class="text-3xl font-extrabold text-amber-400">8</p>
-            <p class="mt-1 text-sm text-slate-400">Certified carriers</p>
+            <p class="text-3xl font-extrabold text-amber-400">3</p>
+            <p class="mt-1 text-sm text-slate-400">Core logistics services</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ SERVICES (3 columns) ============ -->
-    <section id="services" class="bg-white py-20 lg:py-28">
+    <section id="services" class="scroll-mt-20 bg-white py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-wider text-amber-600">Our services</p>
@@ -197,7 +199,7 @@
     </section>
 
     <!-- ============ COVERAGE (2 columns) ============ -->
-    <section id="coverage" class="bg-slate-50 py-20 lg:py-28">
+    <section id="coverage" class="scroll-mt-20 bg-slate-50 py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-wider text-amber-600">Coverage</p>
@@ -240,7 +242,7 @@
     </section>
 
     <!-- ============ WHY TRACKFLOW (4 benefits) ============ -->
-    <section id="why" class="bg-white py-20 lg:py-28">
+    <section id="why" class="scroll-mt-20 bg-white py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-wider text-amber-600">Why TrackFlow</p>
@@ -250,32 +252,32 @@
         </div>
 
         <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="rounded-xl bg-slate-900 p-8 text-white">
+          <article class="rounded-xl bg-slate-900 p-8 text-white">
             <span class="text-3xl" aria-hidden="true">🌍</span>
             <h3 class="mt-4 text-lg font-bold">Binational operation</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-300">The only operator with own infrastructure in the United States and Spain.</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 p-8">
+          </article>
+          <article class="rounded-xl border border-slate-200 p-8">
             <span class="text-3xl" aria-hidden="true">👥</span>
             <h3 class="mt-4 text-lg font-bold text-slate-900">+130 professionals</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">A dedicated team focused on your logistics every single day.</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 p-8">
+          </article>
+          <article class="rounded-xl border border-slate-200 p-8">
             <span class="text-3xl" aria-hidden="true">💻</span>
             <h3 class="mt-4 text-lg font-bold text-slate-900">Own technology</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">Total visibility of your inventory across both warehouses.</p>
-          </div>
-          <div class="rounded-xl border border-slate-200 p-8">
+          </article>
+          <article class="rounded-xl border border-slate-200 p-8">
             <span class="text-3xl" aria-hidden="true">🛍️</span>
             <h3 class="mt-4 text-lg font-bold text-slate-900">E-commerce specialization</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">Deep expertise in fashion, electronics, and cosmetics brands.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ============ CONTACT + CTA ============ -->
-    <section id="contact" class="bg-gradient-to-br from-blue-900 via-slate-900 to-slate-900 py-20 lg:py-28">
+    <section id="contact" class="scroll-mt-20 bg-gradient-to-br from-blue-900 via-slate-900 to-slate-900 py-20 lg:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div>
@@ -338,10 +340,26 @@
   <script>
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
+
+    function setMenuOpen(open) {
+      menu.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    }
+
     toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!open));
-      toggle.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+      setMenuOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        toggle.focus();
+      }
     });
   </script>
 </body>
