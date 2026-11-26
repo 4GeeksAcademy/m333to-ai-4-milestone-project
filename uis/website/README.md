@@ -12,11 +12,11 @@ and warehouse management, operating in the US and Spain).
 | `index.html`       | Landing page (Header, Hero, Services, Coverage, Why TrackFlow, Contact, Footer + Schema.org) |
 | `application.html` | Information-request / sign-up form with full client-side validation                          |
 | `validation.js`    | Validation logic for the form (no backend; submit is simulated)                              |
-| `styles.css`       | Optional small complement to the Tailwind CDN                                                |
+| `styles.css`       | Legacy optional stylesheet; the landing and application pages use Tailwind utilities directly |
 
 ## Tech
 
-- **Tailwind CSS** (CDN) for all styling — responsive, mobile-to-desktop.
+- **Tailwind CSS** (CDN) for all page styling — responsive, mobile-to-desktop; no custom stylesheet is required by either page.
 - **Vanilla JavaScript** for validation — no build step, no dependencies.
 - **Accessible**: semantic HTML, ARIA (`alert`, `dialog`, `radiogroup`, `aria-invalid`), skip links.
 - **SEO**: descriptive title/meta + **Schema.org Organization** JSON-LD on `index.html`.

@@ -6,16 +6,41 @@
   <title>Request information — TrackFlow | Logistics for e-commerce</title>
   <meta name="description" content="Tell TrackFlow about your e-commerce logistics needs. Request information about warehouse management, last-mile and reverse logistics in the US and Spain." />
   <meta name="robots" content="index, follow" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0f172a" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TrackFlow",
+    "description": "Warehouse management and last-mile deliveries for e-commerce",
+    "url": "https://trackflow.com",
+    "foundingDate": "2009",
+    "address": [
+      { "@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Los Angeles", "addressRegion": "California" },
+      { "@type": "PostalAddress", "addressCountry": "ES", "addressLocality": "Zaragoza", "addressRegion": "Aragón" }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-213-555-0147",
+      "contactType": "sales",
+      "availableLanguage": ["Spanish", "English"]
+    },
+    "sameAs": ["https://linkedin.com/company/trackflow"],
+    "areaServed": [
+      { "@type": "Country", "name": "United States" },
+      { "@type": "Country", "name": "Spain" }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-slate-50 text-slate-800 antialiased">
 
   <!-- Skip link -->
-  <a href="#form" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-slate-900 focus:text-white focus:px-4 focus:py-2">Skip to form</a>
+  <a href="#form" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-amber-500">Skip to form</a>
 
   <!-- ============ HEADER ============ -->
   <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur shadow-md">
@@ -30,10 +55,23 @@
         <a href="index.html#coverage" class="text-sm font-medium text-slate-200 hover:text-amber-400">Coverage</a>
         <a href="index.html#contact" class="text-sm font-medium text-slate-200 hover:text-amber-400">Contact</a>
       </nav>
-      <a href="index.html" class="rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-400">
-        Back to website
-      </a>
+      <div class="flex items-center gap-3">
+        <a href="index.html#contact" class="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-400 sm:inline-flex">
+          Back to website
+        </a>
+        <button id="application-menu-toggle" class="rounded-md p-2 text-slate-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 md:hidden" aria-expanded="false" aria-controls="application-mobile-menu" aria-label="Open navigation menu" type="button">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
+    <nav id="application-mobile-menu" class="hidden border-t border-slate-700 px-4 pb-4 md:hidden" aria-label="Mobile navigation">
+      <a href="index.html#home" class="block py-2 text-sm text-slate-200 hover:text-amber-400">Home</a>
+      <a href="index.html#services" class="block py-2 text-sm text-slate-200 hover:text-amber-400">Services</a>
+      <a href="index.html#coverage" class="block py-2 text-sm text-slate-200 hover:text-amber-400">Coverage</a>
+      <a href="index.html#contact" class="block py-2 text-sm text-slate-200 hover:text-amber-400">Contact</a>
+    </nav>
   </header>
 
   <main id="main">
@@ -52,7 +90,7 @@
     </section>
 
     <!-- ============ FORM ============ -->
-    <section id="form" class="pb-20 pt-4">
+    <section id="form" class="scroll-mt-20 pb-20 pt-4">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 
         <!-- Success message (hidden by default) -->
@@ -85,7 +123,7 @@
         </div>
 
         <!-- The form -->
-        <form id="info-form" novalidate class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+        <form id="info-form" novalidate class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10" aria-describedby="form-required-note">
 
           <!-- ===== 1. Company details ===== -->
           <fieldset>
@@ -97,7 +135,7 @@
                 <label for="company-name" class="block text-sm font-medium text-slate-700">
                   Company name <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <input type="text" id="company-name" name="companyName" autocomplete="organization"
+                <input type="text" id="company-name" name="companyName" autocomplete="organization" required minlength="2"
                        class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                        aria-describedby="company-name-error" />
                 <p id="company-name-error" class="mt-1 text-sm text-rose-600 hidden" role="alert"></p>
@@ -108,7 +146,7 @@
                 <label for="contact-person" class="block text-sm font-medium text-slate-700">
                   Contact person (first and last name) <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <input type="text" id="contact-person" name="contactPerson" autocomplete="name"
+                <input type="text" id="contact-person" name="contactPerson" autocomplete="name" required
                        class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                        aria-describedby="contact-person-error" />
                 <p id="contact-person-error" class="mt-1 text-sm text-rose-600 hidden" role="alert"></p>
@@ -119,7 +157,7 @@
                 <label for="email" class="block text-sm font-medium text-slate-700">
                   Corporate email <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <input type="email" id="email" name="email" autocomplete="email"
+                <input type="email" id="email" name="email" autocomplete="email" required
                        placeholder="name@company.com"
                        class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                        aria-describedby="email-error" />
@@ -131,7 +169,7 @@
                 <label for="phone" class="block text-sm font-medium text-slate-700">
                   Phone <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel"
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required
                        placeholder="+1 213 555 0147"
                        class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                        aria-describedby="phone-error" />
@@ -164,7 +202,7 @@
                 <label for="country" class="block text-sm font-medium text-slate-700">
                   Main operating country <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <select id="country" name="country"
+                <select id="country" name="country" required
                         class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                         aria-describedby="country-error">
                   <option value="">Select a country</option>
@@ -181,7 +219,7 @@
                 <label for="product-type" class="block text-sm font-medium text-slate-700">
                   Type of product <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <select id="product-type" name="productType"
+                <select id="product-type" name="productType" required
                         class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                         aria-describedby="product-type-error">
                   <option value="">Select product type</option>
@@ -199,7 +237,7 @@
                 <label for="volume" class="block text-sm font-medium text-slate-700">
                   Estimated monthly shipping volume <span class="text-rose-600" aria-hidden="true">*</span>
                 </label>
-                <select id="volume" name="volume"
+                <select id="volume" name="volume" required
                         class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                         aria-describedby="volume-error">
                   <option value="">Select volume range</option>
@@ -220,7 +258,7 @@
               </span>
               <div class="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap" role="group" aria-labelledby="services-label" aria-describedby="services-error">
                 <label class="inline-flex items-center gap-2 text-sm text-slate-700">
-                  <input type="checkbox" name="services" value="Warehousing" class="h-4 w-4 rounded border-slate-300 text-amber-500 focus:ring-amber-500" />
+                  <input type="checkbox" name="services" value="Warehousing" required class="h-4 w-4 rounded border-slate-300 text-amber-500 focus:ring-amber-500" />
                   Warehousing
                 </label>
                 <label class="inline-flex items-center gap-2 text-sm text-slate-700">
@@ -242,7 +280,7 @@
               </span>
               <div class="mt-3 flex flex-col gap-3 sm:flex-row" role="radiogroup" aria-labelledby="current3pl-label" aria-describedby="current3pl-error">
                 <label class="inline-flex items-center gap-2 text-sm text-slate-700">
-                  <input type="radio" name="current3pl" value="Yes" class="h-4 w-4 border-slate-300 text-amber-500 focus:ring-amber-500" />
+                  <input type="radio" name="current3pl" value="Yes" required class="h-4 w-4 border-slate-300 text-amber-500 focus:ring-amber-500" />
                   Yes
                 </label>
                 <label class="inline-flex items-center gap-2 text-sm text-slate-700">
@@ -277,7 +315,7 @@
           <!-- ===== 3. Privacy ===== -->
           <div class="flex items-start gap-3">
             <input type="checkbox" id="privacy" name="privacy"
-                   class="mt-1 h-4 w-4 rounded border-slate-300 text-amber-500 focus:ring-amber-500"
+                   required class="mt-1 h-4 w-4 rounded border-slate-300 text-amber-500 focus:ring-amber-500"
                    aria-describedby="privacy-error" />
             <div>
               <label for="privacy" class="text-sm text-slate-700">
@@ -294,7 +332,10 @@
                     class="rounded-md bg-amber-500 px-6 py-3 text-base font-semibold text-slate-900 shadow transition hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">
               Submit request
             </button>
-            <p class="text-xs text-slate-500">Fields marked with <span class="text-rose-600" aria-hidden="true">*</span><span class="sr-only">asterisk</span> are required.</p>
+            <button type="reset" id="clear-form" class="rounded-md border border-slate-300 px-6 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+              Clear form
+            </button>
+            <p id="form-required-note" class="text-xs text-slate-500">Fields marked with <span class="text-rose-600" aria-hidden="true">*</span><span class="sr-only">asterisk</span> are required.</p>
           </div>
 
           <!-- Form-level error summary -->
@@ -321,6 +362,31 @@
     </div>
   </footer>
 
+  <script>
+    const applicationMenuToggle = document.getElementById('application-menu-toggle');
+    const applicationMobileMenu = document.getElementById('application-mobile-menu');
+
+    function setApplicationMenuOpen(open) {
+      applicationMobileMenu.classList.toggle('hidden', !open);
+      applicationMenuToggle.setAttribute('aria-expanded', String(open));
+      applicationMenuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    }
+
+    applicationMenuToggle.addEventListener('click', () => {
+      setApplicationMenuOpen(applicationMenuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    applicationMobileMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setApplicationMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && applicationMenuToggle.getAttribute('aria-expanded') === 'true') {
+        setApplicationMenuOpen(false);
+        applicationMenuToggle.focus();
+      }
+    });
+  </script>
   <script src="validation.js"></script>
 </body>
 </html>
