@@ -24,7 +24,7 @@ This repository is the **starter template** for transversal projects. You will w
 1. **Use this repository as a template** and create your own project repo.
 2. **Clone** your repository (or open it in Codespaces).
 3. **Replace** `CONTEXT.md` with the full context for your assigned company.
-4. **Read this folder guide** and open the `README.md` of the folder you are working in.
+4. **Read [`memory-bank/README.md`](./memory-bank/README.md)** for persistent project context and working rules, then open the `README.md` of the folder you are working in.
 5. **Start implementing** in the right folder — do not dump everything in the root.
 6. **Document** what you add: each new app, service, agent, or pipeline gets a subfolder + README.
 
